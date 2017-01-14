@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+<div class="center">
+    <p class='circle-image'
+       style="background-image: url(https://graph.facebook.com/{{ user['uid'] }}/picture?type=large);
+              margin-left: auto; margin-right: auto;">
+    </p>
+    <h3>Hello, {{ user['name'] }}.</h3>
+
+    <a href="/upload" id="upload">
+    <button class="ui green  button">
+        Upload
+    </button>
+    </a>
+
+    <a href="/download" id="download">
+    <button class="ui red button">
+        Download
+    </button>
+    </a>
+
+    <a href="/logout" id="logout">
+    <div class="ui facebook button">
+    <i class="facebook icon"></i>
+        Logout
+    </div>
+    </a>
+
+    <script>
+        document.getElementById('logout').onclick = function() {
+            FB.logout(function(response) { });
+        };
+    </script>
+
+
+
+    <!--<form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+        <input type=file name=file>
+        <input type = "submit"/>
+    </form>-->
+
+</div>
+{% endblock %}

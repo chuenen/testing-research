@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="center">
+<h1>Upload new File</h1>
+    {% if filename %}
+    <div class="ui compact message">
+         <p>{{ filename }}</p>
+    </div>
+    {% endif %}
+<form class="ui form" action="" method=post enctype=multipart/form-data>
+    <div class="field">
+    <input type=file name=file>
+    </div>
+    <div class="field" style="width:15%">
+        <label style='font-size: 18px'><i class="android green large icon"></i>App's name</label>
+        <input name="app" type="text">
+    </div> 
+    <div class="field">
+        <label style='font-size: 18px'><i class="blue write large icon"></i>
+        Introduce your app simply</label>
+        <textarea name="intro"></textarea>
+    </div>
+    <div class="field" id="question" style="width:25%">
+        <label style='font-size: 18px'><i class=" large yellow tasks icon"></i>Questionnaire</label>
+        <input name="ask" type="text">
+    </div>
+    <div class="field">
+    <div class="ui icon buttons">
+        <label class="ui black button" id="plus">
+            <i class="plus icon"></i>
+        </label>
+        <label class="ui black button" id="minus">
+            <i class="minus icon"></i>
+        </label>
+    </div>
+    </div>
+    <input type="submit" value="Submit" class="ui green button"/>
+</form>
+<script>
+   var txtId = 1;
+  
+  $("#plus").click(function () {
+      $("#question").append('<div id="question' + txtId + '" style="margin-top:20px"><input name="ask" type="text"></div>');
+      txtId++;
+  });
+  
+  $("#minus").click(function () {
+     txtId--;
+     $("#question"+txtId).remove();
+  });
+</script>
+
+<!--<script>
+$('input[name="app"]')
+  .form({
+    on: 'blur',
+    fields: {
+        app: {
+            identifier  : 'empty',
+            rules: [
+            {
+                type   : 'empty',
+                prompt : 'Please enter the app\'s name'
+            }
+          ]
+        }
+      }
+    });
+</script>-->
+</div>
+{% endblock %}

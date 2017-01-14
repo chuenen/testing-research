@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+div {
+    width:70%;
+    margin:auto;
+}
+h1 {
+    margin: auto;
+    width:500px;
+    height:100px;
+    text-align:center;
+    padding: 40px;
+}
+</style>
+<h1>App's information</h1>
+<div>
+<table class="ui celled padded fixed orange table"> 
+  <thead>
+    <th class="center aligned two wide">Id</th>
+    <th class="center aligned">Name</th>
+    <th class="center aligned">Posted</th>
+  </tr></thead>
+  <tbody>
+    {% for r in record %}
+    <tr>
+      <td class="center aligned" style="word-wrap : break-word">
+        {{ r.user_total_num }}
+      </td>
+      <td class="center aligned">
+        <a href="/charts/{{ r.uid }}/{{ r.name }}">{{ r.name }}</a>
+      </td>
+      <td class="center aligned">
+        {{ r.time }}  
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}
