@@ -1,65 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
 <style>
-div {
-    width:80%;
-    margin:auto;
+div.shape{
+    margin: auto;
+    width:80vw;
 }
 h1 {
     margin: auto;
-    width:500px;
-    height:100px;
+    width:100vw;
     text-align:center;
     padding: 40px;
 }
 </style>
 <h1>Download the app you want</h1>
-<div>
-<table class="ui celled padded fixed pink table"> 
-  <thead>
-    <th class="center aligned two wide">Name</th>
-    <th class="center aligned seven wide">Introduction</th>
-    <th class="center aligned two wide">Posted</th>
-    <th class="center aligned two wide">Download</th>
-    <th class="center aligned three wide">Questionnaire</th>
-  </tr></thead>
-  <tbody>
+
+<div class="shape demos">
+<div class="column">
+<div class="ui people shape" id="shape">
+  <div class="sudes" style="width:300px;height:20px;margin:auto;">
     {% for r in record %}
-    <tr>
-      <td class="center aligned" style="word-wrap : break-word">
-        {{ r.name }}
-      </td>
-      <td>
-        {{ r.intro }}
-      </td>
-      <td class="center aligned">
-        {{ r.time }}  
-      </td>
-      <td class="center aligned">
-        <form method=post>
-        <a href="/download/{{ r.apk }}" id="{{ r.apk }}" onclick="linkClick()" value="0">Download it!</a>
-        </form>
-      </td>
-      <td class="center aligned">
-        <a href="/questionnaire/{{ r.apk }}">
-            <i class="file text outline circular inverted teal icon"></i>
-       </a>
-      </td>
-    </tr>
-    <!--<script>
-        var clicks = 0;
-        function linkClick(){
-            document.getElementById('{{ r.apk }}').value = ++clicks;
-        }
-       var count = $('#{{ r.apk }}').value;
-       $('#{{ r.apk }}').click(function () {
-           window.alert(count);
-        $('#{{ r.apk }}').value=++count; 
-        });
-    </script>-->
-    {% endfor %}
-    <input id="clicked" size="3" value="0" >
-  </tbody>
-</table>
+    <div class="active side">
+      <div class="ui card">
+        <div class="image">
+          <img src="/{{ r.logo }}">
+        </div>
+        <div class="content">
+          <div class="header" style="word-wrap: break-word;">{{ r.name }}</div>
+          <div class="meta">
+            <a>{{ r.time }}</a>
+          </div>
+          <div class="description">
+            {{ r.intro }}
+          </div>
+        </div>
+        <div class="extra content">
+          <span class="right floated">
+            <a href="/questionnaire/{{ r.app_uid }}">
+                <i class="file text outline circular inverted teal icon"></i>
+            </a>
+          </span>
+          <span>
+            <i class="download icon"></i>
+            <a href="/download/{{ r.apk }}" id="{{ r.apk }}">Download it!</a>
+          </span>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
 </div>
+
 {% endblock %}

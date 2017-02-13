@@ -7,7 +7,16 @@
               margin-left: auto; margin-right: auto;">
     </p>
     <h3>Hello, {{ user['name'] }}.</h3>
-
+    {% if text %}
+    <h4>{{ text }}</h4>
+    {% endif %}
+    {% if charts %}
+    <a href="/charts/{{user['uid']}}" id="upload">
+    <button class="ui yellow  button">
+        Charts
+    </button>
+    </a>
+    {% endif %}
     <a href="/upload" id="upload">
     <button class="ui green  button">
         Upload
@@ -32,13 +41,6 @@
             FB.logout(function(response) { });
         };
     </script>
-
-
-
-    <!--<form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
-        <input type=file name=file>
-        <input type = "submit"/>
-    </form>-->
 
 </div>
 {% endblock %}

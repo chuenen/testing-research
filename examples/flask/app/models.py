@@ -27,6 +27,7 @@ class uploadFile(db.Model):
     name = db.Column(db.String(30), index=True)
     app_uid = db.Column(db.String(100), index=True)
     apk = db.Column(db.String(255), index=True)
+    logo = db.Column(db.String(100), index=True)
     uid = db.Column(db.String(256), index=True)
     owner = db.Column(db.String(20), index=True)
     time = db.Column(db.DateTime, default=datetime.utcnow, index=True)
@@ -42,6 +43,7 @@ class Questionnaire(db.Model):
     apk = db.Column(db.String(255), index=True)
     owner = db.Column(db.String(20), index=True)
     question = db.Column(db.String(255), index=True)
+    owner_uid = db.Column(db.String(256), index=True)
 
 class Answer(db.Model):
     __tablename__= 'answer'
@@ -55,3 +57,5 @@ class Answer(db.Model):
     age = db.Column(db.String(20), index=True)
     gender = db.Column(db.String(20), index=True)
     answer = db.Column(db.String(6), index=True)
+    name = db.Column(db.String(30), index=True)
+    owner_uid = db.Column(db.String(256), index=True)

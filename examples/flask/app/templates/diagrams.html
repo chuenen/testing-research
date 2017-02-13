@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<div class="container">
+    <div id="data-visualization"></div>
+</div>
+<div class="container">
+    <div id="age-visualization"></div>
+</div>
+<div class="container">
+    <div id="rating-visualization"></div>
+</div>
+<script>
+    var data = {{ data|tojson|safe }};
+</script>
+{% for p in  page %}<script src="{{ url_for('static', filename=p+'.js') }}"></script>{% endfor %}
+{% endblock %}
